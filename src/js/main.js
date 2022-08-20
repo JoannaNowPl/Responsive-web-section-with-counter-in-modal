@@ -43,7 +43,7 @@ const showPopup = () => {
   }
 };
 
-const handleClickCloseButton = () => {
+const closePopup = () => {
   overlay.style.display = "none";
 };
 
@@ -54,6 +54,10 @@ const resetCounter = () => {
 
 articleButton.addEventListener("click", showPopup);
 
-closeButton.addEventListener("click", handleClickCloseButton);
+closeButton.addEventListener("click", closePopup);
+
+overlay.addEventListener("click", (e) => {
+  if (e.target.className === "overlay") closePopup();
+});
 
 resetCounterButton.addEventListener("click", resetCounter);
