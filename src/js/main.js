@@ -2,7 +2,7 @@ const articleButton = document.querySelector(".article__button");
 const closeButton = document.querySelector("#popup-close-button");
 const overlay = document.querySelector(".overlay");
 const counterSpan = document.querySelector("#counter");
-
+const resetCounterButton = document.querySelector("#reset-counter-button");
 
 const getItemFromLS = (key) => {
   if (window.localStorage) {
@@ -21,27 +21,39 @@ const setItemInLS = (key, value) => {
 };
 
 const showPopup = () => {
-    overlay.style.display = "block";
-    const howManyTimesPopupWasRendered = getItemFromLS("popup-rendering-counter");
-    if (!howManyTimesPopupWasRendered) {
-      setItemInLS("popup-rendering-counter", JSON.stringify({ counter: 1 }));
-    } else {
-      let counter = JSON.parse(howManyTimesPopupWasRendered).counter;
-      setItemInLS(
-        "popup-rendering-counter",
-        JSON.stringify({ counter: ++counter })
-      );
-  
-      if (counter === 5) {
-        console.log("Popup renders 5 times");
-      }
+  resetCounterButton.style.visibility = "hidden";
+  resetCounterButton.innerHTML = "Reset counter";
+  overlay.style.display = "block";
+
+  const howManyTimesPopupWasRendered = getItemFromLS("popup-rendering-counter");
+  if (!howManyTimesPopupWasRendered) {
+    setItemInLS("popup-rendering-counter", JSON.stringify({ counter: 1 }));
+    counterSpan.innerHTML = "1 time";
+  } else {
+    let counter = JSON.parse(howManyTimesPopupWasRendered).counter;
+    setItemInLS(
+      "popup-rendering-counter",
+      JSON.stringify({ counter: ++counter })
+    );
+    counterSpan.innerHTML = `${counter} times`;
+
+    if (counter > 5) {
+      resetCounterButton.style.visibility = "visible";
     }
-  };
+  }
+};
 
 const handleClickCloseButton = () => {
   overlay.style.display = "none";
 };
 
+const resetCounter = () => {
+  setItemInLS("popup-rendering-counter", JSON.stringify({ counter: 0 }));
+  resetCounterButton.innerHTML = "Counter reseted";
+};
+
 articleButton.addEventListener("click", showPopup);
 
 closeButton.addEventListener("click", handleClickCloseButton);
+
+resetCounterButton.addEventListener("click", resetCounter);

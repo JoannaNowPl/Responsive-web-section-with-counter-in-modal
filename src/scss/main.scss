@@ -4,9 +4,29 @@ $font-stack: "Roboto", sans-serif;
 $primary-color: rgba(228, 193, 174, 1);
 $background-primary-color: rgba(255, 255, 255, 1);
 $background-secondary-color: rgba(18, 18, 18, 0.5);
+
 @mixin fontProps($fontSize, $fontWeight) {
   font-size: $fontSize;
   font-weight: $fontWeight;
+}
+
+@mixin buttonProps() {
+  background-color: $primary-color;
+  border: none;
+  border-radius: 32px;
+  color: #ffffff;
+  width: 128px;
+  height: 48px;
+}
+
+@mixin buttonHoverProps() {
+  cursor: pointer;
+  background-color: #ffffff;
+  border: solid;
+  border-color: $primary-color;
+  border-radius: 32px;
+  border-width: 1px;
+  color: $primary-color;
 }
 
 * {
@@ -25,7 +45,7 @@ body {
   div.overlay {
     position: fixed;
     display: none;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     top: 0;
     left: 0;
@@ -42,7 +62,6 @@ body {
       height: 210px;
       background-color: $background-primary-color;
       z-index: 2;
- 
 
       button#popup-close-button {
         border: none;
@@ -75,6 +94,21 @@ body {
         width: 380px;
         position: relative;
         bottom: 22px;
+
+        span#counter {
+          font-weight: 700;
+        }
+      }
+      button#reset-counter-button {
+        @include fontProps(16px, 700);
+        @include buttonProps();
+        position: relative;
+        left: 500px;
+        bottom: 58px;
+        visibility: hidden;
+      }
+      button#reset-counter-button:hover {
+        @include buttonHoverProps()
       }
     }
   }
@@ -110,15 +144,10 @@ body {
         }
         button {
           @include fontProps(16px, 700);
-          background-color: $primary-color;
-          border: none;
-          border-radius: 32px;
-          color: #ffffff;
-          width: 128px;
-          height: 48px;
+          @include buttonProps();
         }
         button:hover {
-          cursor: pointer;
+          @include buttonHoverProps()
         }
       }
     }
