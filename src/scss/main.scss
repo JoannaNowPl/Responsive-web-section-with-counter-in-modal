@@ -1,115 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
-$font-stack: 'Roboto', sans-serif;
+$font-stack: "Roboto", sans-serif;
 $primary-color: rgba(228, 193, 174, 1);
 $background-primary-color: rgba(255, 255, 255, 1);
-@mixin fontProps($fontSize, $fontWeight){
-    font-size: $fontSize;
-    font-weight: $fontWeight;
+$background-secondary-color: rgba(18, 18, 18, 0.5);
+@mixin fontProps($fontSize, $fontWeight) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
 }
 
-
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: $font-stack;
-    color: rgba(18, 18, 18, 1);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+  color: rgba(18, 18, 18, 1);
 }
 
 body {
-    background-color: $background-primary-color;
+  background-color: $background-primary-color;
+  width: 100vw;
+  height: 100vh;
+
+  div.overlay {
+    position: fixed;
+    display: none;
+    width: 100%; 
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $background-secondary-color;
+    z-index: 2;
 
     div.popup {
-        position:fixed;
-        top: 375px;
-        left: 260px;
-        width: 920px;
-        height: 210px;        
-        border-width: 1px;
-        border-style: solid;
+      position: fixed;
+      top: 375px;
+      left: 260px;
+      width: 920px;
+      height: 210px;
+      background-color: $background-primary-color;
+      z-index: 2;
+ 
+
+      button#popup-close-button {
+        border: none;
+        width: 24px;
+        height: 24px;
         background-color: $background-primary-color;
-        z-index: 999;
-        visibility: hidden;
-        
-        button#popup-close-button {
-            border: none;
-            width: 24px;
-            height: 24px;
-            background-color: $background-primary-color;
-            @include fontProps(24px, 700);
-            position:relative;
-            left:856px;
-            top: 46px;
-        }
-    
-        header{
-            @include fontProps(42px, 700);
-            width: 380px;
-            height: 50px;
-            margin-top: 56px;
-            margin-left: 95px;
-            position: relative;
-            bottom: 22px;
-        }
-        p{
-            @include fontProps(16px, 300); 
-            line-height: 24px;
-            margin-top: 24px;
-            margin-left: 95px;
-            width: 380px;
-            position: relative;
-            bottom: 22px;
-        }
+        @include fontProps(24px, 700);
+        position: relative;
+        left: 856px;
+        top: 46px;
+      }
+      button#popup-close-button:hover {
+        cursor: pointer;
+      }
+
+      header {
+        @include fontProps(42px, 700);
+        width: 380px;
+        height: 50px;
+        margin-top: 56px;
+        margin-left: 95px;
+        position: relative;
+        bottom: 22px;
+      }
+      p {
+        @include fontProps(16px, 300);
+        line-height: 24px;
+        margin-top: 24px;
+        margin-left: 95px;
+        width: 380px;
+        position: relative;
+        bottom: 22px;
+      }
     }
+  }
 
-    main {
-        section{
-            display: flex;
-            margin-top: 96px;
-           
-            width: 1440px;
+  main {
+    background-color: $background-primary-color;
+    width: 100vw;
+    height: 100vh;
+    section {
+      display: flex;
+      position: relative;
+      top: 96px;
+      width: 1440px;
+      img {
+        width: 505px;
+        height: 330px;
+        margin-left: 230px;
+      }
+      article {
+        width: 380px;
+        margin-left: 95px;
 
-            img{
-                width: 505px;
-                height: 330px;
-                margin-left: 230px;
-
-            }
-            article{
-                width: 380px;
-                margin-left: 95px;
-    
-                header{
-                    @include fontProps(42px, 700);
-                    height: 50px;
-                    margin-top: 40px;
-                }
-                p{
-                    @include fontProps(16px, 300);
-                    line-height: 24px;
-                    margin-top: 24px;
-                    margin-bottom: 32px;
-                }
-                button{
-                    @include fontProps(16px, 700);
-                    background-color: $primary-color;
-                    border: none;
-                    border-radius: 32px;
-                    color:#FFFFFF;
-                    width: 128px;
-                    height: 48px;
-
-                }
-                button:hover{
-                    cursor: pointer;
-                }
-            }
+        header {
+          @include fontProps(42px, 700);
+          height: 50px;
+          margin-top: 40px;
         }
-      
-        
+        p {
+          @include fontProps(16px, 300);
+          line-height: 24px;
+          margin-top: 24px;
+          margin-bottom: 32px;
+        }
+        button {
+          @include fontProps(16px, 700);
+          background-color: $primary-color;
+          border: none;
+          border-radius: 32px;
+          color: #ffffff;
+          width: 128px;
+          height: 48px;
+        }
+        button:hover {
+          cursor: pointer;
+        }
+      }
     }
+  }
 }
-
-
-
