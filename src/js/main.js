@@ -1,4 +1,4 @@
-const articleButton = document.querySelector(".article__button");
+const articleButtons = document.querySelectorAll(".article__button");
 const closeButton = document.querySelector("#popup-close-button");
 const overlay = document.querySelector(".overlay");
 const counterSpan = document.querySelector("#counter");
@@ -20,25 +20,27 @@ const setItemInLS = (key, value) => {
   }
 };
 
-const showPopup = () => {
+const showPopup = (buttonKey) => {
   resetCounterButton.style.visibility = "hidden";
   resetCounterButton.innerHTML = "Reset counter";
-  overlay.style.display = "block";
+  overlay.style.display = "flex";
 
-  const howManyTimesPopupWasRendered = getItemFromLS("popup-rendering-counter");
+  const howManyTimesPopupWasRendered = getItemFromLS(buttonKey);
+
   if (!howManyTimesPopupWasRendered) {
-    setItemInLS("popup-rendering-counter", JSON.stringify({ counter: 1 }));
+    setItemInLS(buttonKey, JSON.stringify({ counter: 1 }));
     counterSpan.innerHTML = "1 time";
   } else {
     let counter = JSON.parse(howManyTimesPopupWasRendered).counter;
-    setItemInLS(
-      "popup-rendering-counter",
-      JSON.stringify({ counter: ++counter })
-    );
+    setItemInLS(buttonKey, JSON.stringify({ counter: ++counter }));
     counterSpan.innerHTML = `${counter} times`;
 
     if (counter > 5) {
       resetCounterButton.style.visibility = "visible";
+      resetCounterButton.onclick = function () {
+        setItemInLS(buttonKey, JSON.stringify({ counter: 0 }));
+        resetCounterButton.innerHTML = "Counter reseted";
+      };
     }
   }
 };
@@ -47,17 +49,15 @@ const closePopup = () => {
   overlay.style.display = "none";
 };
 
-const resetCounter = () => {
-  setItemInLS("popup-rendering-counter", JSON.stringify({ counter: 0 }));
-  resetCounterButton.innerHTML = "Counter reseted";
-};
-
-articleButton.addEventListener("click", showPopup);
+articleButtons.forEach((el) =>
+  el.addEventListener("click", (e) => {
+    const buttonKey = e.target.id;
+    showPopup(buttonKey);
+  })
+);
 
 closeButton.addEventListener("click", closePopup);
 
 overlay.addEventListener("click", (e) => {
   if (e.target.className === "overlay") closePopup();
 });
-
-resetCounterButton.addEventListener("click", resetCounter);

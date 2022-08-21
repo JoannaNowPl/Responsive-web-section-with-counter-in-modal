@@ -11,18 +11,37 @@
     <title>Joanna Nowakowska - Recruitment task</title>
   </head>
   <body>
-    <div class="overlay">
-      <div class="popup">
-        <button id="popup-close-button">x</button>
-        <header>Alert!</header>
-        <p>
-          You have clicked <span id="counter"><strong>X times</strong></span>
-          to related button.
-        </p>
-        <button id="reset-counter-button">Reset counter</button>
+    <section>
+      <div class="overlay">
+        <div class="popup">
+          <button id="popup-close-button">x</button>
+          <header>Alert!</header>
+          <p>
+            You have clicked <span id="counter"><strong>X times</strong></span>
+            to related button.
+          </p>
+          <button id="reset-counter-button">Reset counter</button>
+        </div>
       </div>
-    </div>
-    <main class="main">
+    </section>
+    <main>
+      <section>
+        <picture>
+          <source media="(min-width: 768px)" srcset=" ./images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_784.jpg">
+          <source media="(max-width: 767px)" srcset=" ./images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_480.jpg">
+          <img src="./images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_784.jpg"  alt="Article hero image - sunset by the sea">
+        </picture>
+          
+        <article>
+          <header>Lorem Ipsum</header>
+          <p>
+            Infinitely scalable, feature-rich and cloud-native data management
+            and protection for modern and legacy infrastructures and SaaS
+            platforms, managed via a single app with no hardware required.
+          </p>
+          <button class="article__button" id="button-section1">Button</button>
+        </article>
+      </section>
       <section>
         <img
           src="./images/sean-o-KMn4VEeEPR8-unsplash_1_s6zmfh_c_scale,w_784.jpg"
@@ -35,7 +54,7 @@
             and protection for modern and legacy infrastructures and SaaS
             platforms, managed via a single app with no hardware required.
           </p>
-          <button class="article__button">Button</button>
+          <button class="article__button" id="button-section2">Button</button>
         </article>
       </section>
     </main>
