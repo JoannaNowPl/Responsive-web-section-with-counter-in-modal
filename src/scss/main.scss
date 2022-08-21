@@ -29,6 +29,11 @@ $background-secondary-color: rgba(18, 18, 18, 0.5);
   color: $primary-color;
 }
 
+@mixin flexCenter() {
+  align-items: center;
+  justify-content: center;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -51,13 +56,12 @@ body {
     bottom: 0;
     background-color: $background-secondary-color;
     z-index: 2;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter();
 
     div.popup {
-      position: fixed;
+      position: absolute;
       top: 375px;
-      left: 260px;
+      left: auto;
       width: 920px;
       height: 210px;
       background-color: $background-primary-color;
@@ -70,8 +74,8 @@ body {
         background-color: $background-primary-color;
         @include fontProps(24px, 700);
         position: relative;
-        left: 856px;
-        top: 46px;
+        left: 850px;
+        top: 40px;
       }
       button#popup-close-button:hover {
         cursor: pointer;
@@ -114,7 +118,6 @@ body {
   }
 
   main {
-    
     section {
       display: flex;
       position: relative;
@@ -154,25 +157,66 @@ body {
 }
 
 @media only screen and (min-width: 1441px) {
-  body div.overlay div.popup {
-    position: absolute;
-    left: auto;
-  }
-
   main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1340px) {
+  body main {
+    section {
+      width: 100vw;
+      img {
+        margin-left: 10vw;
+        margin-top: 3vw;
+        width: 40vw;
+        height: auto;
+        
+      }
+      article {
+        margin-left: 5vw;
+        margin-right: 10vw;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  body div.overlay div.popup {
+    top: auto;
+    width: 70vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    button#popup-close-button {
+      left: 30vw;
+    }
+    header {
+      font-size: 36px;
+      width: 60vw;
+      margin-left: 40px;
+      margin-right: 30px;
+    }
+    p {
+      font-size: 16px;
+      width: 60vw;
+      margin-left: 40px;
+      margin-right: 30px;
+    }
+    button#reset-counter-button {
+      bottom: 60px;
+      left: 160px;
+    }
+  }
+
   body main {
     section {
       flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      @include flexCenter();
       width: 90vw;
       margin-left: 40px;
       margin-right: 40px;
@@ -180,28 +224,57 @@ body {
         width: 40vw;
         height: auto;
         margin: auto;
-      
       }
       article {
         width: 35vw;
-        margin: 0px 50px;
+        margin: 0px 0px 0px 50px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        header{
+        header {
           font-size: 36px;
         }
-       
-        
-      }}}}
+      }
+    }
+  }
+}
 
 @media only screen and (min-width: 600px) and (max-width: 767px) {
+  body div.overlay div.popup {
+    top: auto;
+    width: 70vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    button#popup-close-button {
+      left: 30vw;
+    }
+    header {
+      font-size: 28px;
+      width: 60vw;
+      margin-left: 40px;
+      margin-right: 30px;
+    }
+    p {
+      font-size: 14px;
+      width: 60vw;
+      margin-left: 40px;
+      margin-right: 30px;
+    }
+    button#reset-counter-button {
+      bottom: 0px;
+      left: 0px;
+      margin-bottom: 20px;
+    }
+  }
+
   body main {
     section {
       flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      @include flexCenter();
       width: 100vw;
       margin-left: 40px;
       img {
@@ -211,27 +284,26 @@ body {
       }
       article {
         width: 35vw;
-        margin: 0px 30px;
+        margin: 0px 40px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
 
-        header{
+        header {
           font-size: 28px;
         }
-        p{
+        p {
           font-size: 14px;
         }
-        
-      }}}}
-
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: 599px) {
   body div.overlay div.popup {
-    position: absolute;
-    left: auto;
-    top:auto;
+    top: auto;
     width: 80vw;
     height: auto;
     display: flex;
@@ -239,7 +311,7 @@ body {
     align-items: center;
     justify-content: center;
     button#popup-close-button {
-      left:30vw;
+      left: 30vw;
     }
     header {
       font-size: 28px;
@@ -247,7 +319,7 @@ body {
       margin-left: 40px;
       margin-right: 30px;
     }
-    p{
+    p {
       font-size: 14px;
       width: 70vw;
       margin-left: 40px;
@@ -256,16 +328,14 @@ body {
     button#reset-counter-button {
       bottom: 0px;
       left: 0px;
-      margin-bottom: 20px;    
+      margin-bottom: 20px;
     }
   }
- 
 
   body main {
     section {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      @include flexCenter();
       width: 100vw;
       img {
         width: 60vw;
@@ -277,8 +347,7 @@ body {
         margin: 0px 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        @include flexCenter();
 
         header {
           font-size: 28px;

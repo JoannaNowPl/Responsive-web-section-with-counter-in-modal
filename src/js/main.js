@@ -20,11 +20,18 @@ const setItemInLS = (key, value) => {
   }
 };
 
+const removeItemFromLS = (key) => {
+  if (window.localStorage) {
+    localStorage.removeItem(key);
+  } else {
+    throw Error("Localstorage is not supported");
+  }
+};
+
 const showPopup = (buttonKey) => {
   resetCounterButton.style.visibility = "hidden";
   resetCounterButton.innerHTML = "Reset counter";
   overlay.style.display = "flex";
-
   const howManyTimesPopupWasRendered = getItemFromLS(buttonKey);
 
   if (!howManyTimesPopupWasRendered) {
@@ -38,7 +45,7 @@ const showPopup = (buttonKey) => {
     if (counter > 5) {
       resetCounterButton.style.visibility = "visible";
       resetCounterButton.onclick = function () {
-        setItemInLS(buttonKey, JSON.stringify({ counter: 0 }));
+        removeItemFromLS(buttonKey);
         resetCounterButton.innerHTML = "Counter reseted";
       };
     }
