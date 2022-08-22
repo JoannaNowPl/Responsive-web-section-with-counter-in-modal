@@ -34,6 +34,39 @@ $background-secondary-color: rgba(18, 18, 18, 0.5);
   justify-content: center;
 }
 
+@mixin mediaSection() {
+  @include flexCenter();
+  flex-direction: row;
+  width: 90vw;
+  margin-left: 10vw;
+}
+@mixin mediaImg($imgWidth) {
+  width: $imgWidth;
+  margin: auto;
+  height: auto;
+}
+
+@mixin mediaArticleMargins() {
+  margin-left: 5vw;
+  margin-right: 10vw;
+}
+
+@mixin mediaPopupDiv($divWidth) {
+  top: auto;
+  width: $divWidth;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  @include flexCenter();
+}
+
+@mixin mediaPopupTextProps($fontSize, $width) {
+  font-size: $fontSize;
+  width: $width;
+  margin-left: 40px;
+  margin-right: 30px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -118,6 +151,9 @@ body {
   }
 
   main {
+    display: flex;
+    flex-direction: column;
+    @include flexCenter();
     section {
       display: flex;
       position: relative;
@@ -156,28 +192,15 @@ body {
   }
 }
 
-@media only screen and (min-width: 1441px) {
-  main {
-    display: flex;
-    flex-direction: column;
-    @include flexCenter();
-  }
-}
-
-@media only screen and (min-width: 1024px) and (max-width: 1340px) {
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
   body main {
     section {
-      width: 100vw;
+      @include mediaSection();
       img {
-        margin-left: 10vw;
-        margin-top: 3vw;
-        width: 40vw;
-        height: auto;
-        
+        @include mediaImg(450px);
       }
       article {
-        margin-left: 5vw;
-        margin-right: 10vw;
+        @include mediaArticleMargins();
       }
     }
   }
@@ -185,27 +208,15 @@ body {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   body div.overlay div.popup {
-    top: auto;
-    width: 70vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include mediaPopupDiv(70vw);
     button#popup-close-button {
       left: 30vw;
     }
     header {
-      font-size: 36px;
-      width: 60vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(36px, 60vw);
     }
     p {
-      font-size: 16px;
-      width: 60vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(16px, 60vw);
     }
     button#reset-counter-button {
       bottom: 60px;
@@ -215,25 +226,15 @@ body {
 
   body main {
     section {
-      flex-direction: row;
-      @include flexCenter();
-      width: 90vw;
-      margin-left: 40px;
-      margin-right: 40px;
+      @include mediaSection();
       img {
-        width: 40vw;
-        height: auto;
-        margin: auto;
+        @include mediaImg(320px);
       }
       article {
-        width: 35vw;
-        margin: 0px 0px 0px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
+        @include mediaArticleMargins();
         header {
           font-size: 36px;
+          height: auto;
         }
       }
     }
@@ -242,27 +243,15 @@ body {
 
 @media only screen and (min-width: 600px) and (max-width: 767px) {
   body div.overlay div.popup {
-    top: auto;
-    width: 70vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include mediaPopupDiv(70vw);
     button#popup-close-button {
       left: 30vw;
     }
     header {
-      font-size: 28px;
-      width: 60vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(28px, 60vw);
     }
     p {
-      font-size: 14px;
-      width: 60vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(14px, 60vw);
     }
     button#reset-counter-button {
       bottom: 0px;
@@ -273,25 +262,15 @@ body {
 
   body main {
     section {
-      flex-direction: row;
-      @include flexCenter();
-      width: 100vw;
-      margin-left: 40px;
+      @include mediaSection();
       img {
-        width: 40vw;
-        height: auto;
-        margin: auto;
+        @include mediaImg(230px);
       }
       article {
-        width: 35vw;
-        margin: 0px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-
+        @include mediaArticleMargins();
         header {
           font-size: 28px;
+          height: auto;
         }
         p {
           font-size: 14px;
@@ -303,27 +282,15 @@ body {
 
 @media only screen and (max-width: 599px) {
   body div.overlay div.popup {
-    top: auto;
-    width: 80vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include mediaPopupDiv(80vw);
     button#popup-close-button {
       left: 30vw;
     }
     header {
-      font-size: 28px;
-      width: 70vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(24px, 70vw);
     }
     p {
-      font-size: 14px;
-      width: 70vw;
-      margin-left: 40px;
-      margin-right: 30px;
+      @include mediaPopupTextProps(14px, 70vw);
     }
     button#reset-counter-button {
       bottom: 0px;
@@ -338,9 +305,7 @@ body {
       @include flexCenter();
       width: 100vw;
       img {
-        width: 60vw;
-        height: auto;
-        margin-left: auto;
+        @include mediaImg(60vw);
       }
       article {
         width: 80vw;
@@ -350,9 +315,10 @@ body {
         @include flexCenter();
 
         header {
-          font-size: 28px;
+          font-size: 24px;
           margin-top: 20px;
-          height: 40px;
+          height: auto;
+          text-align: center;
         }
         p {
           font-size: 14px;
