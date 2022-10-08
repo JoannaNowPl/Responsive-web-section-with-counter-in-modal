@@ -1,3 +1,7 @@
+Webpage section project available on: https://joannanowpl.github.io/frontend-recruitment-task/ .
+
+---
+
 Repozytorium zawiera sekcję strony.
 Strona dostępna jest pod adresem: https://joannanowpl.github.io/frontend-recruitment-task/ .
 
