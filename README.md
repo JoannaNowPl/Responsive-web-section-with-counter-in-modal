@@ -1,9 +1,9 @@
-Webpage section project available on: https://joannanowpl.github.io/frontend-recruitment-task/ .
+Webpage section project available on: https://joannanowpl.github.io/Responsive-web-section-with-counter-in-modal/.
 
 ---
 
 Repozytorium zawiera sekcję strony.
-Strona dostępna jest pod adresem: https://joannanowpl.github.io/frontend-recruitment-task/ .
+Strona dostępna jest pod adresem: https://joannanowpl.github.io/Responsive-web-section-with-counter-in-modal/.
 
 Po kliknięciu na przycisk "Button" w sekcji pojawia się kominikat informujący o ilości kliknięć danego przycisku.
 Po kliknięciu w przycisk więcej niż 5 razy, w okienku pojawia się przycisk do resetowania licznika.
